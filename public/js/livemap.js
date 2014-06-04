@@ -16,12 +16,12 @@ $(document).ready(function(){
 	});
 	
 	var StationIcon = L.Icon.extend({options:{
-	    iconUrl: 'images/station_22x22.png',
+	    iconUrl: 'images/station_10x10.png',
 	    shadowUrl: null,
 	    shadowSize: new L.Point(0,0),
-	    iconSize: new L.Point(22, 22),
-	    iconAnchor: new L.Point(11, 11),
-	    popupAnchor: new L.Point(0,-9)
+	    iconSize: new L.Point(10, 10),
+	    iconAnchor: new L.Point(0, 0),
+	    popupAnchor: new L.Point(0,-5)
 	}});
 
 	var BusIcon = L.Icon.extend({options:{
@@ -41,6 +41,8 @@ $(document).ready(function(){
 	    iconAnchor: new L.Point(10,10),
 	    popupAnchor: new L.Point(0,-10)
 	}});
+
+        var route_icons = {}
 	
 	var hIcon = new StationIcon();
 	var bIcon = new BusIcon();
@@ -155,6 +157,21 @@ $(document).ready(function(){
 						popup = "<b>"+trips[trip].route_short_name+" – "+trips[trip].trip_headsign+"</b><br>"+trips[trip].route_long_name+"<br><i>"+trip+"</i>";
 						//bus or tram?
 						markerIcon = (trips[trip].route_type == "0" ? tIcon : bIcon);
+                                                var route_short_name = trips[trip].route_short_name;
+                                                if (!(route_short_name in route_icons)) {
+                                                    var cur_icon = L.Icon.extend({options: {
+                                                        iconUrl: 'images/route_icons/'+route_short_name+'.png',
+                                                        shadowUrl: null,
+                                                        shadowSize: new L.Point(0, 0),
+                                                        iconSize: new L.Point(20, 20),
+                                                        iconAnchor: new L.Point(10, 10),
+	                                                popupAnchor: new L.Point(0,-10)
+                                                    }});
+                                                    route_icons[route_short_name] = new cur_icon();
+
+                                                }
+                                                markerIcon = route_icons[route_short_name];
+                                                /*console.log(trips[trip]);*/
 					}
 					else{
 						console.dir(trips);
