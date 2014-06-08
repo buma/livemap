@@ -1,6 +1,7 @@
 body {
 	padding: 0;
 	margin: 0;
+  padding-top:50px;
 }
 
 html,body,#content,#map {
@@ -11,13 +12,6 @@ html,body,#content,#map {
 	font-size:18px;
 	float:right;
 	margin:10px 0px 0px 10px;
+  color:white;
 }
 
-#warning {
-	position: relative; 
-	top: 150px; 
-	left: auto; 
-	margin: 0 auto; 
-	z-index: 999; 
-	display:none;
-}
