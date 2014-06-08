@@ -40,7 +40,7 @@ var gtfs = Gtfs(process.env.GTFS_PATH || path.join(__dirname,"gtfs",gtfsdir), fu
 		
 		console.dir(mapData.getTrips());
 
-		require(path.join(__dirname, '/routes/site'))(app, mapData.getStops(), mapData.getShapes(),mapData.getTrips());
+		require(path.join(__dirname, '/routes/site'))(app, mapData.getStops(), mapData.getShapes(),mapData.getTrips(),mapData.getRoutes() );
 
 		io.sockets.on('connection', function (socket) {
 		});

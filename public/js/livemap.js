@@ -98,6 +98,7 @@ $(document).ready(function(){
 	var stopsLayer;
 	var shapeLayers = {};
 	var trips = {};
+        var routes_colors = {};
 	
 	$.ajax({
 	  url: '/data/trips',
@@ -106,6 +107,20 @@ $(document).ready(function(){
 		}
 
 	});
+
+        $.ajax({
+            url: '/data/routes',
+                success: function(data) {
+                    for(var i=0; i < data.length; i++) {
+                        var route = data[i];
+                        if (route.route_color != undefined) {
+                            routes_colors[route.route_short_name] = "#" + route.route_color;
+                        } else {
+                            routes_colors[route.route_short_name] = "#0000ff";
+                        }
+                    }
+                }
+        });
 	
 	$.ajax({
 	  url: '/data/stops',
@@ -117,19 +132,22 @@ $(document).ready(function(){
 		  }
 	});	
 
-	$.ajax({
-	  url: '/data/shapes',
+        $.ajax({
+	  url: '/routes.json',
 		  success: function(data) {
-		  
-		  
-		  	for(var i in data){
-			  	if (data.hasOwnProperty(i)) {
 
-			  		L.geoJson(data[i], {
-						
-					  
-				  }).addTo(map); 
-			  	}
+		  
+		  	for(var i in data.features){
+                                    var geometry = data.features[i].geometry;
+                                    var ref = data.features[i].properties.ref
+                                    var color = routes_colors[ref];
+                                    console.log(ref);
+
+                                    L.geoJson(geometry, {
+                                        style: {'color': color}
+
+
+                                    }).addTo(map); 
 		  	}
 		}
 
