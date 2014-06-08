@@ -2,19 +2,29 @@ $(document).ready(function(){
         $("#warning").modal({'show':false});
 
 	var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/3a83164a47874169be4cabc2e8b8c449/43782/256/{z}/{x}/{y}.png';
+        var OSM_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var OSM_ATTR = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 	var cloudmadeAttribution = '<a href="http://www.ulmapi.de">UlmApi.de</a>, Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade';
+    var tileUrl = 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
+        pt_layer = L.tileLayer(tileUrl, {maxZoom: 18, attribution: "Maps &copy; <a href=\"http://www.thunderforest.com/\">Thunderforest</a>, Data " + OSM_ATTR});
 	var cloudmade = new 	L.TileLayer(
-		cloudmadeUrl, {
+		OSM_URL, {
 		maxZoom : 18,
-		attribution : cloudmadeAttribution
+		attribution : "Maps & Data " + OSM_ATTR
 	});
 
 	var map = new L.Map('map', {
 		center : new L.LatLng(48.399976,9.995399),
 		zoom : 13,
-		layers : [ cloudmade ],
+		layers : [ pt_layer ],
 		zoomControl : false
 	});
+        var baseMaps = {
+            "OSM Mapnik": cloudmade,
+            "Public transport": pt_layer
+        };
+
+        L.control.layers(baseMaps).addTo(map);
 	
 	var StationIcon = L.Icon.extend({options:{
 	    iconUrl: 'images/station_10x10.png',
