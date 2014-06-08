@@ -1,4 +1,5 @@
 $(document).ready(function(){
+        $("#warning").modal({'show':false});
 
 	var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/3a83164a47874169be4cabc2e8b8c449/43782/256/{z}/{x}/{y}.png';
 	var cloudmadeAttribution = '<a href="http://www.ulmapi.de">UlmApi.de</a>, Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade';
@@ -81,7 +82,7 @@ $(document).ready(function(){
 	if (
 		(((d.getUTCHours() + offset) % 24) >= 23 && d.getUTCMinutes() > 30) || 
 		(((d.getUTCHours() + offset) % 24)) < 6){
-		$("#warning").show();
+                $("#warning").modal('show');
 	}	
 	
 	var stopsLayer;
@@ -197,5 +198,5 @@ $(document).ready(function(){
 
 
 function removeTopbar() {
-  document.querySelector('div.topbar').remove();
+  document.querySelector('div.navbar').remove();
 }
