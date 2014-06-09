@@ -17,7 +17,7 @@
 		"socket.io-client": "= 0.9.15"
   },
   "scripts": {
-      "start": "node server.js"
+      "start": "TZ=\"Europe/Ljubljana\" node server.js"
   },
   "main": "server.js",
   "devDependencies": {}

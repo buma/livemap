@@ -42,7 +42,7 @@ var gtfs = Gtfs(process.env.GTFS_PATH || path.join(__dirname,"gtfs",gtfsdir), fu
 		//calculate normalized shapes
 		var pathNormalizer = PathNormalizer(mapData.getShapes());
 		
-		console.dir(mapData.getTrips());
+                /*console.dir(mapData.getTrips());*/
 
 		require(path.join(__dirname, '/routes/site'))(app, mapData.getStops(), mapData.getShapes(),mapData.getTrips(),mapData.getRoutes() );
 
@@ -94,6 +94,7 @@ var gtfs = Gtfs(process.env.GTFS_PATH || path.join(__dirname,"gtfs",gtfsdir), fu
 		server.listen(server_port, server_ip_address);
 		//var appServer = app.listen(parseInt(process.env.PORT) || 7777); 
 		console.log('Listening on ' + server_ip_address + ":" + server_port);
+                console.log(new Date());
 
 	});
 
