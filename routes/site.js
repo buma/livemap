@@ -4,10 +4,10 @@ module.exports = function(app, stops, shapes, trips, routes) {
 		res.redirect("/map");
 	});
 	app.get('/map', function(req, res) {
-		res.render('container/map', { locals: { pageTitle: "LiveMap", type: "map"}});
+		res.render('container/map', { locals: { pageTitle: "Živa Mapa", type: "map"}});
 	});
 	app.get('/about', function(req, res) {
-		res.render('container/map', { locals: { pageTitle: "About", type: "about"}});
+		res.render('container/map', { locals: { pageTitle: "O Strani", type: "about"}});
 	});
 	app.get('/data/stops', function(req, res){
 		res.json(stops);
