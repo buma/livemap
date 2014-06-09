@@ -1,11 +1,11 @@
 {
   "author": "ulmapi <datalove@lists.uni-ulm.de>",
-  "name": "ulmapi-de",
-  "version": "0.0.2",
+  "name": "marprom-si",
+  "version": "0.0.5",
   "homepage": "http://ulmapi.de",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ulmapi/livemap.git"
+    "url": "git://github.com/buma/livemap.git"
   },
   "engines": {
     "node": ">= v0.4.7"
@@ -16,5 +16,9 @@
 		"socket.io": "= 0.9.14",
 		"socket.io-client": "= 0.9.15"
   },
+  "scripts": {
+      "start": "node server.js"
+  },
+  "main": "server.js",
   "devDependencies": {}
 }
