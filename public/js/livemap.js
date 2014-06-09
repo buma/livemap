@@ -128,7 +128,7 @@ $(document).ready(function(){
 		  success: function(data) {
 
 			  L.geoJson(data, {
-					pointToLayer: function(f, latlng) { return new L.Marker(latlng, {icon : hIcon }).bindPopup('<b>'+f.properties.stop_name+'</b><br>'+f.properties.stop_longname); }
+					pointToLayer: function(f, latlng) { return new L.Marker(latlng, {icon : hIcon }).bindPopup('<b>'+f.properties.stop_name+'</b>'); }
 			  }).addTo(map);  
 		  }
 	});	
