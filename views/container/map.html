@@ -32,7 +32,7 @@
 
   <body>
 
-	  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	  <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -47,15 +47,17 @@
           <ul class="nav navbar-nav">
             <li <% if (type == "map") { %>class="active" <% } %>><a href="/map">Zemljevid</a></li>
             <li <% if (type == "about") { %>class="active" <% } %>><a href="/about">O strani</a></li>
+		    <li class="hidden-xs hidden-print disabled"><a href="#" id="clock"></a></li>
           </ul>
-		  <span class="hidden-xs hidden-print" id="clock"></span>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
 	<% if (type == "map") {%>
+    <div class="container full">
 
     <div id="map" />
+	</div>
 
 
 <div class="modal fade" id="warning" role="dialog" tabindex="-1">
