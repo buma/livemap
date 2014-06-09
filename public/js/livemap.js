@@ -12,10 +12,13 @@ $(document).ready(function(){
 	});
 
 	var map = new L.Map('map', {
-		center : new L.LatLng(48.399976,9.995399),
+		center : new L.LatLng(46.55,15.65),
 		zoom : 13,
+		minZoom : 12,
+                maxZoom : 17,
+                maxBounds : L.latLngBounds(L.latLng(46.45157783694036,15.430641174316406), L.latLng(46.648022080120654,15.869407653808594)),
 		layers : [ pt_layer ],
-		zoomControl : false
+		zoomControl : true
 	});
         var baseMaps = {
             "OSM Mapnik": cloudmade,
@@ -181,7 +184,7 @@ $(document).ready(function(){
 					var popup;
 					var markerIcon = bIcon;
 					if(trips && trips[trip]){
-						popup = "<b>"+trips[trip].route_short_name+" – "+trips[trip].trip_headsign+"</b><br>"+trips[trip].route_long_name+"<br><i>"+trip+"</i>";
+						popup = "<b>"+trips[trip].route_short_name+" – "+trips[trip].trip_headsign+"</b><br>"+trips[trip].route_long_name+"<br><i>"+trip+"</i>"; // Direction:"+trips[trip].direction_id +" ser:" + trips[trip].service_id;
 						//bus or tram?
 						markerIcon = (trips[trip].route_type == "0" ? tIcon : bIcon);
                                                 var route_short_name = trips[trip].route_short_name;
